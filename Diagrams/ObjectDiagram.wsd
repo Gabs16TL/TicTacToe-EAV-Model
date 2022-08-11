@@ -1,0 +1,47 @@
+@startuml TicTacToeObjectDiagram
+
+class ttt{
+    object_id
+}
+
+class turn{
+    object_id
+    player1(#) player_turn
+    player2(#) player_turn
+    gamefinished  boolean
+    winner(#) player
+}
+
+class player{
+   object_id
+}
+
+class player_turn{
+   object_id
+   player(#) player
+   piece(#) tpiece
+}
+
+class square{
+    object_id
+    number row
+    number column
+    piece(#) tpiece
+}
+
+class piece{
+   object_id
+   text piece
+}
+
+ttt *-- turn:DSU_reference
+ttt *-- player
+
+turn *--"2" player_turn
+
+player_turn *-- player
+player_turn *-- piece
+
+turn *--"3x3" square:dsu_reference
+
+@enduml
